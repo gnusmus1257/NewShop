@@ -1,0 +1,15 @@
+<form [formGroup]="loginForm">
+  <mat-form-field>
+    <input matInput placeholder="Email" [formControl]="user.username" [(ngModel)]="user.username" [errorStateMatcher]="matcher">
+    <mat-hint>Errors appear instantly!</mat-hint>
+    <mat-error *ngIf="loginForm.get('userName').hasError('minLength')">
+      Min length {{Constants.minValidationLength}}
+    </mat-error>
+    <mat-error *ngIf="loginForm.get('userName').hasError('maxLength')">
+      Max length {{Constants.maxValidationLength}}
+    </mat-error>
+    <mat-error *ngIf="loginForm.get('userName').hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+</form>
