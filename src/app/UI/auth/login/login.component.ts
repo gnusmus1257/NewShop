@@ -23,8 +23,9 @@ export class LoginComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.user = new User('', '');
     this.loginForm = this.formBuilder.group({
-      userName: ['', [
+      username: ['', [
         Validators.required,
         Validators.minLength(Constants.minValidationLength),
         Validators.maxLength(Constants.maxValidationLength)
@@ -36,5 +37,9 @@ export class LoginComponent implements OnInit {
       ]]
     });
     this.matcher = new MyErrorStateMatcher();
+  }
+
+  onLogin() {
+
   }
 }
