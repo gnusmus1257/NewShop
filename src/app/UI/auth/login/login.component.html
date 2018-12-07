@@ -1,12 +1,11 @@
 <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
   <mat-form-field>
     <input matInput placeholder="User name" name="name" formControlName="username" [(ngModel)]="user.username" [errorStateMatcher]="matcher">
-    <mat-hint>Errors appear instantly!</mat-hint>
-    <mat-error *ngIf="loginForm.get('username').hasError('minLength')">
-      Min length {{Constants.minValidationLength}}
+    <mat-error *ngIf="loginForm.get('username').hasError('minlength')">
+      Min length {{constants.minValidationLength}}
     </mat-error>
-    <mat-error *ngIf="loginForm.get('username').hasError('maxLength')">
-      Max length {{Constants.maxValidationLength}}
+    <mat-error *ngIf="loginForm.get('username').hasError('maxlength')">
+      Max length {{constants.maxValidationLength}}
     </mat-error>
     <mat-error *ngIf="loginForm.get('username').hasError('required')">
       Email is <strong>required</strong>
@@ -15,12 +14,11 @@
 
   <mat-form-field>
     <input matInput placeholder="Password" name="password" formControlName="password" [(ngModel)]="user.password" [errorStateMatcher]="matcher">
-    <mat-hint>Errors appear instantly!</mat-hint>
-    <mat-error *ngIf="loginForm.get('password').hasError('minLength')">
-      Min length {{Constants.minValidationLength}}
+    <mat-error *ngIf="loginForm.get('password').hasError('minlength')">
+      Min length {{constants.minValidationLength}}
     </mat-error>
-    <mat-error *ngIf="loginForm.get('password').hasError('maxLength')">
-      Max length {{Constants.maxValidationLength}}
+    <mat-error *ngIf="loginForm.get('password').hasError('maxlength')">
+      Max length {{constants.maxValidationLength}}
     </mat-error>
     <mat-error *ngIf="loginForm.get('password').hasError('required')">
       Email is <strong>required</strong>

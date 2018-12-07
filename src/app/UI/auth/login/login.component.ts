@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public user: User;
   public matcher;
+  public constants = Constants;
 
   private formBuilder = new FormBuilder();
 
@@ -40,6 +41,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
+    alert(JSON.stringify(this.loginForm.get('username').errors));
 
   }
 }
