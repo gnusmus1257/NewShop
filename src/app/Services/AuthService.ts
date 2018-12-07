@@ -1,15 +1,23 @@
 import { SerializeHelper } from './SerializeHelper';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../Models/User';
-import { Observable } from 'rxjs';
 import { Constants } from '../Models/Constants';
-import { catchError, retry } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
 
-  constructor(private http: HttpClient) {}
+  public user: User;
+
+  constructor() { }
+
+  public login(user: User): boolean {
+    if (this.isLoginValid(user)) {
+      this.user = user;
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   public isLoginValid(user: User): boolean {
     const dbUser = this._findUser(user.username);

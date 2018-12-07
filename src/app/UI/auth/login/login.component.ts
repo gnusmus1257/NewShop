@@ -1,3 +1,4 @@
+import { AuthService } from './../../../Services/AuthService';
 import { Constants } from './../../../Models/Constants';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   private formBuilder = new FormBuilder();
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.user = new User('', '');
@@ -41,7 +42,9 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    alert(JSON.stringify(this.loginForm.get('username').errors));
-
+    if (this.loginForm.valid) {
+      const isLogged = this.authService.login(this.user);
+      console.log(isLogged);
+    }
   }
 }
