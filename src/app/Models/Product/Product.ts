@@ -1,3 +1,4 @@
+import { ImageSlider } from './ImageSlider';
 import { Category } from './Category';
 import { Specification } from './Specification';
 import { Review } from './Review';
@@ -14,11 +15,13 @@ export class Product {
   reviewers: Review[];
   comments: Comment[];
   imageUrl: string;
+  imagesLinks: ImageSlider[];
 
   constructor() {
     this.category = new Category();
     this.specifications = [];
     this.reviewers = [];
     this.comments = [];
+    this.imagesLinks = [];
   }
 }
