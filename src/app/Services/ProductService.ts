@@ -1,3 +1,4 @@
+import { Constants } from './../Models/Constants';
 import { Injectable, EventEmitter } from '@angular/core';
 import { Product } from '../Models/Product/Product';
 import { BaseBDService } from './baseBDService';
@@ -6,11 +7,8 @@ import { AngularFireDatabase } from '@angular/fire/database';
 @Injectable()
 export class ProductService extends BaseBDService<Product> {
 
-  tableName = 'products';
-
   constructor(protected db: AngularFireDatabase) {
-    super(db);
-
+    super(db, Constants.productsTableName);
   }
 
   public get(id: number): Product {
@@ -20,7 +18,7 @@ export class ProductService extends BaseBDService<Product> {
   public add(element: Product): boolean {
     if (!this.isContain(element)) {
       element.id = this.getNewId();
-      this.db.list<Product>('/' + this.tableName).push(element);
+      this.db.list<Product>(this.tableName).push(element);
       this.onAddElement.emit(true);
       return true;
     } else {

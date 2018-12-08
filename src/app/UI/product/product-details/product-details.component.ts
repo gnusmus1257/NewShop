@@ -11,13 +11,16 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductDetailsComponent implements OnInit {
 
   public product: Product;
-  public columns = this.product.specifications.map(x => x.name);
+  public columns;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.product = this.productService.get(params['id']);
+      if (this.product.specifications) {
+        this.columns = this.product.specifications.map(x => x.name);
+      }
     });
   }
 
