@@ -23,7 +23,7 @@ export class ProductDetailsComponent implements OnInit {
         this.product = this.productService.get(params.id);
         console.log(this.productService);
         if (this.product.specifications) {
-          this.columns = this.product.specifications.map(x => x.name);
+          this.columns = ['Specification', 'Value'];
         }
         this.isReady = true;
       });
