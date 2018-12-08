@@ -2,7 +2,7 @@ import { ProductService } from './../../../Services/ProductService';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Constants } from 'src/app/Models/Constants';
-import { DefaultErrorStateMatcher } from '../../ValidatorsHelpers/DefaultErrorStateMatcher';
+import { DefaultErrorStateMatcher } from '../../ValidatorsHelpers/defaultErrorStateMatcher';
 import { Product } from 'src/app/Models/Product/Product';
 
 @Component({

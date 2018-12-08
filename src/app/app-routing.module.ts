@@ -7,6 +7,7 @@ import { ProductDetailsComponent } from './UI/product/product-details/product-de
 
 const routes: Routes = [
   { path: '', component: AddProductComponent },
+  { path: 'auth', component: AddProductComponent },
   { path: 'product-details/:id', component: ProductDetailsComponent },
   { path: 'add-product', component: AddProductComponent }
 ];

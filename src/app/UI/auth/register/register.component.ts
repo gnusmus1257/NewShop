@@ -5,7 +5,7 @@ import { User } from 'src/app/Models/User';
 import { Constants } from 'src/app/Models/Constants';
 import { AuthService } from 'src/app/Services/AuthService';
 import { PasswordsErrorStateMatcher } from '../../ValidatorsHelpers/passwordsErrorStateMatcher';
-import { DefaultErrorStateMatcher } from '../../ValidatorsHelpers/DefaultErrorStateMatcher';
+import { DefaultErrorStateMatcher } from '../../ValidatorsHelpers/defaultErrorStateMatcher';
 
 @Component({
   selector: 'app-register',

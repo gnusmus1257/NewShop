@@ -1,3 +1,4 @@
+import { MatButtonModule } from '@angular/material/button';
 import { ProductModule } from './UI/product/product.module';
 import { AuthService } from './Services/AuthService';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,10 +12,16 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { ProductService } from './Services/ProductService';
+import { NavComponent } from './UI/nav/nav.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +30,12 @@ import { ProductService } from './Services/ProductService';
     AuthModule,
     ProductModule,
     AngularFireModule.initializeApp(environment.firebase, 'Shop'),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    FlexLayoutModule,
+    MatMenuModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [AuthService, ProductService],
   bootstrap: [AppComponent]
