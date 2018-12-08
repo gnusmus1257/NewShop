@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { User } from '../Models/User';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { BaseBDService } from './baseBDService';
 
 @Injectable()
@@ -14,7 +14,7 @@ export class AuthService extends BaseBDService<User> {
 
   constructor(protected db: AngularFireDatabase) {
     super(db);
-    this.tableName = '/users';
+    this.tableName = 'users';
   }
 
   public login(user: User): boolean {
@@ -29,7 +29,7 @@ export class AuthService extends BaseBDService<User> {
 
   public register(user: User): boolean {
     if (!this.isContain(user)) {
-      this.db.list<User>(this.tableName).push(user);
+      this.db.list<User>('/' + this.tableName).push(user);
       this.OnRegisterEvent.emit(true);
       return true;
     } else {

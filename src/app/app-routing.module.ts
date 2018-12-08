@@ -1,3 +1,4 @@
+import { AddProductComponent } from './UI/product/add-product/add-product.component';
 import { AuthComponent } from './UI/auth/auth.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -6,7 +7,8 @@ import { ProductDetailsComponent } from './UI/product/product-details/product-de
 
 const routes: Routes = [
   { path: '', component: AuthComponent },
-  { path: 'product-details/:id', component: ProductDetailsComponent}
+  { path: 'product-details/:id', component: ProductDetailsComponent },
+  { path: 'add-product', component: AddProductComponent }
 ];
 
 @NgModule({

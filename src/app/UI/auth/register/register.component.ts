@@ -4,8 +4,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from 'src/app/Models/User';
 import { Constants } from 'src/app/Models/Constants';
 import { AuthService } from 'src/app/Services/AuthService';
-import { DefaultErrorStateMatcher } from '../../ValidatorsHelpers/defaultErrorStateMatcher';
 import { PasswordsErrorStateMatcher } from '../../ValidatorsHelpers/passwordsErrorStateMatcher';
+import { DefaultErrorStateMatcher } from '../../ValidatorsHelpers/DefaultErrorStateMatcher';
 
 @Component({
   selector: 'app-register',

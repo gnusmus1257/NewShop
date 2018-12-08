@@ -14,4 +14,11 @@ export class Product {
   reviewers: Review[];
   comments: Comment[];
   imageUrl: string;
+
+  constructor() {
+    this.category = new Category();
+    this.specifications = [];
+    this.reviewers = [];
+    this.comments = [];
+  }
 }

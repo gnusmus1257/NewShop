@@ -1,0 +1,72 @@
+<div class="flex-container">
+  <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()" class="form center-block">
+    <h4>Add Product</h4>
+    <mat-form-field class="">
+      <input matInput placeholder="Title" name="title" formControlName="title" [(ngModel)]="product.title"
+        [errorStateMatcher]="matcher">
+      <mat-error *ngIf="addProductForm.get('title').hasError('minlength')">
+        Min length {{constants.minValidationLength}}
+      </mat-error>
+      <mat-error *ngIf="addProductForm.get('title').hasError('maxlength')">
+        Max length {{constants.maxValidationLength}}
+      </mat-error>
+      <mat-error *ngIf="addProductForm.get('title').hasError('required')">
+        Field is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="">
+      <input matInput placeholder="Category" name="category" formControlName="category" [(ngModel)]="product.category.title"
+        [errorStateMatcher]="matcher">
+      <mat-error *ngIf="addProductForm.get('category').hasError('minlength')">
+        Min length {{constants.minValidationLength}}
+      </mat-error>
+      <mat-error *ngIf="addProductForm.get('category').hasError('maxlength')">
+        Max length {{constants.maxValidationLength}}
+      </mat-error>
+      <mat-error *ngIf="addProductForm.get('category').hasError('required')">
+        Field is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="">
+      <textarea matInput placeholder="Description" name="description" formControlName="description" [(ngModel)]="product.description"
+        [errorStateMatcher]="matcher"></textarea>
+      <mat-error *ngIf="addProductForm.get('description').hasError('required')">
+        Field is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="">
+      <input matInput placeholder="Short description" name="shortDescription" formControlName="shortDescription"
+        [(ngModel)]="product.shortDescription" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="addProductForm.get('shortDescription').hasError('maxlength')">
+        Max length {{constants.maxShortDescriptionLength}}
+      </mat-error>
+      <mat-error *ngIf="addProductForm.get('shortDescription').hasError('required')">
+        Field is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="">
+      <input matInput placeholder="Price" name="price" formControlName="price" [(ngModel)]="product.price"
+        [errorStateMatcher]="matcher" type="number">
+      <mat-error *ngIf="addProductForm.get('price').hasError('min')">
+        Min is 0
+      </mat-error>
+      <mat-error *ngIf="addProductForm.get('price').hasError('required')">
+        Field is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="">
+      <input matInput placeholder="Image url" name="imageUrl" formControlName="imageUrl" [(ngModel)]="product.imageUrl"
+        [errorStateMatcher]="matcher">
+      <mat-error *ngIf="addProductForm.get('imageUrl').hasError('required')">
+        Field is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit">Add</button>
+  </form>
+</div>
