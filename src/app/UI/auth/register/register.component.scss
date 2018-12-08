@@ -1,0 +1,10 @@
+.form {
+	min-width: 200px;
+	max-width: 600px;
+	width: auto;
+	padding: 15px 10px;
+}
+
+.form > * {
+	width: 100%;
+}

@@ -1,4 +1,4 @@
-<form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+<form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="form">
   <mat-form-field>
     <input matInput placeholder="User name" name="name" formControlName="username" [(ngModel)]="user.username"
       [errorStateMatcher]="defaultMatcher">
