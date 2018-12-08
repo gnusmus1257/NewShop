@@ -11,6 +11,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgImageSliderModule } from 'ng-image-slider';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
-    MatIconModule
+    MatIconModule,
+    NgImageSliderModule,
+    MatTooltipModule
   ]
 })
 export class ProductModule { }

@@ -1,3 +1,4 @@
+import { ImageSlider } from './../../../Models/Product/ImageSlider';
 import { ProductService } from './../../../Services/ProductService';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
@@ -18,6 +19,8 @@ export class AddProductComponent implements OnInit {
   public constants = Constants;
   public specificationName = '';
   public specificationValue = '';
+  public smallImageUrl = '';
+  public bigImageUrl = '';
 
   private formBuilder = new FormBuilder();
 
@@ -70,5 +73,16 @@ export class AddProductComponent implements OnInit {
 
   removeSpecification(specification: Specification) {
     this.product.specifications = this.product.specifications.filter(x => x !== specification);
+  }
+
+  addImage() {
+    const image = new ImageSlider(this.bigImageUrl, this.smallImageUrl);
+    this.bigImageUrl = '';
+    this.smallImageUrl = '';
+    this.product.imagesLinks.push(image);
+  }
+
+  removeImage(image: ImageSlider) {
+    this.product.imagesLinks = this.product.imagesLinks.filter(x => x !== image);
   }
 }
