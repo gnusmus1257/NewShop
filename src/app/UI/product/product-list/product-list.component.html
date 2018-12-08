@@ -1,8 +1,10 @@
-<div class="flex center fullsize" *ngIf="!IsReady">
-  <mat-spinner></mat-spinner>
-</div>
-<div class="grid" *ngIf="IsReady">
-  <div *ngFor="let item of Products">
-    <app-product [product]="item"></app-product>
+<div class="container">
+  <div class="flex center fullsize" *ngIf="!IsReady">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div class="grid" *ngIf="IsReady">
+    <div *ngFor="let item of Products">
+      <app-product [product]="item"></app-product>
+    </div>
   </div>
 </div>

@@ -16,21 +16,33 @@
 
 .grid {
   display: grid;
-  grid-gap: 15px;
   padding-top: 80px;
+  justify-content: center;
 
   @media (min-width: $breakpoint-mobile) {
     grid-template-columns: auto;
     width: 100vw;
+    grid-gap: 0;
+    grid-row-gap: 15px;
   }
 
   @media (min-width: $breakpoint-tablet) {
     grid-template-columns: auto auto;
-    width: 100vw;
+    width: 100%;
+    grid-gap: 15px;
   }
 
   @media (min-width: $breakpoint-laptop) {
     grid-template-columns: auto auto auto;
-    width: 70vw;
+  }
+
+  @media (min-width: $breakpoint-laptop-l) {
+    grid-template-columns: auto auto auto auto;
+  }
+}
+
+.container {
+  @media (min-width: $breakpoint-mobile) {
+    padding: 0;
   }
 }
