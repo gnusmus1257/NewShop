@@ -1,9 +1,11 @@
+import { PasswordsValidation } from '../../ValidatorsHelpers/passwordsValidation';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from 'src/app/Models/User';
 import { Constants } from 'src/app/Models/Constants';
 import { AuthService } from 'src/app/Services/AuthService';
-import { MyErrorStateMatcher } from '../../ValidatorsHelpers/MyErrorStateMathcher';
+import { DefaultErrorStateMatcher } from '../../ValidatorsHelpers/defaultErrorStateMatcher';
+import { PasswordsErrorStateMatcher } from '../../ValidatorsHelpers/passwordsErrorStateMatcher';
 
 @Component({
   selector: 'app-register',
@@ -13,8 +15,10 @@ import { MyErrorStateMatcher } from '../../ValidatorsHelpers/MyErrorStateMathche
 export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
   public user: User;
-  public matcher;
+  public defaultMatcher;
+  public passwordMatcher;
   public constants = Constants;
+  public confirmPassword: string;
 
   private formBuilder = new FormBuilder();
 
@@ -38,14 +42,20 @@ export class RegisterComponent implements OnInit {
         Validators.minLength(Constants.minValidationLength),
         Validators.maxLength(Constants.maxValidationLength)
       ]]
-    });
-    this.matcher = new MyErrorStateMatcher();
+    }, {
+        validators: PasswordsValidation.check
+      });
+    this.defaultMatcher = new DefaultErrorStateMatcher();
+    this.passwordMatcher = new PasswordsErrorStateMatcher();
   }
 
   onRegister() {
     if (this.registerForm.valid) {
-      const isLogged = this.authService.login(this.user);
-      console.log(isLogged);
+      // const isLogged = this.authService.login(this.user);
+      // console.log(isLogged);
+      console.log('valid');
+    } else {
+      console.log(JSON.stringify(this.registerForm.errors));
     }
   }
 

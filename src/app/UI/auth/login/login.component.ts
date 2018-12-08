@@ -7,7 +7,7 @@ import {
   FormBuilder
 } from '@angular/forms';
 import { User } from '../../../Models/User';
-import { MyErrorStateMatcher } from '../../ValidatorsHelpers/MyErrorStateMathcher';
+import { DefaultErrorStateMatcher } from '../../ValidatorsHelpers/defaultErrorStateMatcher';
 
 @Component({
   selector: 'app-login',
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         Validators.maxLength(Constants.maxValidationLength)
       ]]
     });
-    this.matcher = new MyErrorStateMatcher();
+    this.matcher = new DefaultErrorStateMatcher();
   }
 
   onLogin() {

@@ -1,6 +1,7 @@
 <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
   <mat-form-field>
-    <input matInput placeholder="User name" name="name" formControlName="username" [(ngModel)]="user.username" [errorStateMatcher]="matcher">
+    <input matInput placeholder="User name" name="name" formControlName="username" [(ngModel)]="user.username"
+      [errorStateMatcher]="matcher">
     <mat-error *ngIf="loginForm.get('username').hasError('minlength')">
       Min length {{constants.minValidationLength}}
     </mat-error>
@@ -13,7 +14,8 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Password" name="password" formControlName="password" [(ngModel)]="user.password" [errorStateMatcher]="matcher">
+    <input matInput placeholder="Password" name="password" formControlName="password" [(ngModel)]="user.password"
+      [errorStateMatcher]="matcher" type="password">
     <mat-error *ngIf="loginForm.get('password').hasError('minlength')">
       Min length {{constants.minValidationLength}}
     </mat-error>

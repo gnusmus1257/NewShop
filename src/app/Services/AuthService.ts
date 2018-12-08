@@ -6,7 +6,7 @@ import { Constants } from '../Models/Constants';
 @Injectable()
 export class AuthService {
 
-  public user: User;
+  private user: User;
 
   constructor() { }
 
@@ -17,6 +17,14 @@ export class AuthService {
     } else {
       return false;
     }
+  }
+
+  public getUser(): User {
+    return this.user;
+  }
+
+  public isLogged(): boolean {
+    return this.user ? true : false;
   }
 
   public isLoginValid(user: User): boolean {
