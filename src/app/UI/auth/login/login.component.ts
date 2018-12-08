@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   private formBuilder = new FormBuilder();
 
-  constructor(/*private authService: AuthService*/) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.user = new User('', '');
@@ -43,8 +43,8 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     if (this.loginForm.valid) {
-      // const isLogged = this.authService.login(this.user);
-      // console.log(isLogged);
+      const isLogged = this.authService.login(this.user);
+      console.log(isLogged);
     }
   }
 }
