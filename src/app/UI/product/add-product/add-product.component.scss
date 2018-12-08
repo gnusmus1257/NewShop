@@ -18,6 +18,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding-top: 80px;
 }
 
 .input-group {
@@ -34,7 +35,7 @@
   }
 }
 
-.fullsize {
-  width: 100vw;
-  height: 100vh;
+.mat-card-image {
+  height: 100px;
+  widows: 100px;
 }
