@@ -18,15 +18,12 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.isReady = false;
-    this.productService.isReadyList.subscribe(() => {
-      this.route.params.subscribe(params => {
-        this.product = this.productService.get(params.id);
-        console.log(this.productService);
-        if (this.product.specifications) {
-          this.columns = ['Specification', 'Value'];
-        }
-        this.isReady = true;
-      });
+    this.route.params.subscribe(async params => {
+      this.product = await this.productService.get(params.id);
+      if (this.product.specifications) {
+        this.columns = ['Specification', 'Value'];
+      }
+      this.isReady = true;
     });
   }
 

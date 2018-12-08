@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
@@ -32,7 +33,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatProgressSpinnerModule,
     MatIconModule,
     NgImageSliderModule,
-    MatTooltipModule
+    MatTooltipModule,
+    RouterModule
   ]
 })
 export class ProductModule { }
