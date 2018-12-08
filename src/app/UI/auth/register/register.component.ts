@@ -1,21 +1,17 @@
-import { AuthService } from './../../../Services/AuthService';
-import { Constants } from './../../../Models/Constants';
 import { Component, OnInit } from '@angular/core';
-import {
-  Validators,
-  FormGroup,
-  FormBuilder
-} from '@angular/forms';
-import { User } from '../../../Models/User';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { User } from 'src/app/Models/User';
+import { Constants } from 'src/app/Models/Constants';
+import { AuthService } from 'src/app/Services/AuthService';
 import { MyErrorStateMatcher } from '../../ValidatorsHelpers/MyErrorStateMathcher';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class LoginComponent implements OnInit {
-  public loginForm: FormGroup;
+export class RegisterComponent implements OnInit {
+  public registerForm: FormGroup;
   public user: User;
   public matcher;
   public constants = Constants;
@@ -26,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = new User('', '');
-    this.loginForm = this.formBuilder.group({
+    this.registerForm = this.formBuilder.group({
       username: ['', [
         Validators.required,
         Validators.minLength(Constants.minValidationLength),
@@ -36,15 +32,21 @@ export class LoginComponent implements OnInit {
         Validators.required,
         Validators.minLength(Constants.minValidationLength),
         Validators.maxLength(Constants.maxValidationLength)
+      ]],
+      confirmPassword: ['', [
+        Validators.required,
+        Validators.minLength(Constants.minValidationLength),
+        Validators.maxLength(Constants.maxValidationLength)
       ]]
     });
     this.matcher = new MyErrorStateMatcher();
   }
 
-  onLogin() {
-    if (this.loginForm.valid) {
+  onRegister() {
+    if (this.registerForm.valid) {
       // const isLogged = this.authService.login(this.user);
       // console.log(isLogged);
     }
   }
+
 }

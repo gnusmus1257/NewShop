@@ -1,0 +1,45 @@
+<form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+  <mat-form-field>
+    <input matInput placeholder="User name" name="name" formControlName="username" [(ngModel)]="user.username"
+      [errorStateMatcher]="matcher">
+    <mat-error *ngIf="registerForm.get('username').hasError('minlength')">
+      Min length {{constants.minValidationLength}}
+    </mat-error>
+    <mat-error *ngIf="registerForm.get('username').hasError('maxlength')">
+      Max length {{constants.maxValidationLength}}
+    </mat-error>
+    <mat-error *ngIf="registerForm.get('username').hasError('required')">
+      Field is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Password" name="password" formControlName="password" [(ngModel)]="user.password"
+      [errorStateMatcher]="matcher">
+    <mat-error *ngIf="registerForm.get('password').hasError('minlength')">
+      Min length {{constants.minValidationLength}}
+    </mat-error>
+    <mat-error *ngIf="registerForm.get('password').hasError('maxlength')">
+      Max length {{constants.maxValidationLength}}
+    </mat-error>
+    <mat-error *ngIf="registerForm.get('password').hasError('required')">
+      Field is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Confirm password" name="confirmPassword" formControlName="confirmPassword" [(ngModel)]="user.password"
+      [errorStateMatcher]="matcher">
+    <mat-error *ngIf="registerForm.get('confirmPassword').hasError('minlength')">
+      Min length {{constants.minValidationLength}}
+    </mat-error>
+    <mat-error *ngIf="registerForm.get('confirmPassword').hasError('maxlength')">
+      Max length {{constants.maxValidationLength}}
+    </mat-error>
+    <mat-error *ngIf="registerForm.get('confirmPassword').hasError('required')">
+      Field is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button type="submit">Login</button>
+</form>
