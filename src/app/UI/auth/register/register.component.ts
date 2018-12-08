@@ -51,9 +51,8 @@ export class RegisterComponent implements OnInit {
 
   onRegister() {
     if (this.registerForm.valid) {
-      // const isLogged = this.authService.login(this.user);
-      // console.log(isLogged);
-      console.log('valid');
+      const isRegistered = this.authService.register(this.user);
+      console.log(isRegistered);
     } else {
       console.log(JSON.stringify(this.registerForm.errors));
     }

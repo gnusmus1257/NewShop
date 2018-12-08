@@ -7,3 +7,11 @@ export class User {
     this.password = password;
   }
 }
+
+export class EntityUsers {
+  users: UserElement[];
+}
+
+export class UserElement {
+  user: User;
+}
