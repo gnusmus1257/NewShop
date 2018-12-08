@@ -1,3 +1,4 @@
+import { Constants } from './../../Models/Constants';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,5 +8,5 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent {
 
-  title = 'Shop';
+  constants = Constants;
 }

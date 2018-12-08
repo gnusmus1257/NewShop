@@ -4,4 +4,5 @@ export class Constants {
   public static maxShortDescriptionLength = 250;
   public static productsTableName = 'products';
   public static usersTableName = 'users';
+  public static AppTitle = 'Shop';
 }

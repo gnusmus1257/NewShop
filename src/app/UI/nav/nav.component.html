@@ -1,15 +1,13 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="absolute">
 
   <button mat-button routerLink="/">
     <mat-icon>home</mat-icon>
-    {{title}}
+    {{constants.AppTitle}}
   </button>
 
-  <!-- This fills the remaining space of the current row -->
   <span class="fill-remaining-space"></span>
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
     <button mat-button routerLink="/products">Products</button>
-    <button mat-button routerLink="/dashboard">Dashboard</button>
     <button mat-button routerLink="/auth">Auth</button>
   </div>
   <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
@@ -19,7 +17,5 @@
 </mat-toolbar>
 <mat-menu x-position="before" #menu="matMenu">
   <button mat-menu-item routerLink="/products">Products</button>
-  <button mat-menu-item routerLink="/dashboard">Dashboard</button>
-  <!--<button mat-menu-item>Help</button>-->
   <button mat-menu-item routerLink="/auth">Auth</button>
 </mat-menu>
