@@ -1,0 +1,34 @@
+.fullsize {
+	width: 100vw;
+	height: 100vh;
+}
+
+.form {
+	z-index: 999;
+	max-width: 600px;
+	width: 100%;
+	height: auto;
+	background-color: white;
+	border: 2px solid white;
+	padding: auto;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	border-radius: 5px;
+}
+
+
+.bg-img {
+	z-index: 0;
+	position: absolute;
+		background-image: url('/assets/favicon.ico');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	filter: blur(30px);
+}
+
+.flex-container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+}
