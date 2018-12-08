@@ -11,8 +11,10 @@ export class ProductService extends BaseBDService<Product> {
     super(db, Constants.productsTableName);
   }
 
-  public get(id: number): Product {
-    return this.elements.find(x => x.id === id);
+  public get(id: string): Product {
+    const el =  this.elements.find(x => x.id.toString() === id);
+    console.log(el);
+    return el;
   }
 
   public add(element: Product): boolean {

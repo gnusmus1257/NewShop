@@ -5,6 +5,7 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 @Injectable()
 export abstract class BaseBDService<T> {
 
+  public isReadyList = new EventEmitter<boolean>();
   public onAddElement = new EventEmitter<boolean>();
   public elements: T[];
   public refElements: Observable<T[]>;
@@ -45,7 +46,9 @@ export abstract class BaseBDService<T> {
   public getAll() {
     this.refElements = this.db.list<T>(this.tableName).valueChanges();
     this.refElements.subscribe(list => {
-      this.elements = list; console.log(this.elements);
+      this.elements = list;
+      console.log(this.elements);
+      this.isReadyList.emit(true);
     });
   }
 }
