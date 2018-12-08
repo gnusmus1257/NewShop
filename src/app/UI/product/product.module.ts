@@ -1,3 +1,4 @@
+import { MatIconModule } from '@angular/material/icon';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { NgModule } from '@angular/core';
@@ -24,7 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule
   ]
 })
 export class ProductModule { }

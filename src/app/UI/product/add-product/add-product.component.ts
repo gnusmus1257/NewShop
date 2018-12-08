@@ -4,6 +4,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Constants } from 'src/app/Models/Constants';
 import { DefaultErrorStateMatcher } from '../../ValidatorsHelpers/defaultErrorStateMatcher';
 import { Product } from 'src/app/Models/Product/Product';
+import { Specification } from 'src/app/Models/Product/Specification';
 
 @Component({
   selector: 'app-add-product',
@@ -15,23 +16,12 @@ export class AddProductComponent implements OnInit {
   public product: Product;
   public matcher;
   public constants = Constants;
+  public specificationName = '';
+  public specificationValue = '';
 
   private formBuilder = new FormBuilder();
 
   constructor(private productService: ProductService) { }
-
-  /*
-            id: number;
-            title: string;
-            category: Category;
-            price: number;
-            description: string;
-            shortDescription: string;
-            specifications: Specification[];
-            reviewers: Review[];
-            comments: Comment[];
-            imageUrl: string;
-  */
 
   ngOnInit() {
     this.product = new Product();
@@ -71,4 +61,14 @@ export class AddProductComponent implements OnInit {
     }
   }
 
+  addSpecification() {
+    const specification = new Specification(this.specificationName, this.specificationValue);
+    this.specificationName = '';
+    this.specificationValue = '';
+    this.product.specifications.push(specification);
+  }
+
+  removeSpecification(specification: Specification) {
+    this.product.specifications = this.product.specifications.filter(x => x !== specification);
+  }
 }

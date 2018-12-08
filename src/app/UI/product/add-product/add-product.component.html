@@ -1,4 +1,4 @@
-<div class="flex-container">
+<div class="flex-container fullsize">
   <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()" class="form center-block">
     <h4>Add Product</h4>
     <mat-form-field class="">
@@ -67,6 +67,42 @@
       </mat-error>
     </mat-form-field>
 
+    <div class="">
+      <div class="input-group">
+        <mat-form-field class="">
+          <input matInput placeholder="Specification name" name="specificationName" [ngModelOptions]="{standalone: true}"
+            [(ngModel)]="specificationName">
+        </mat-form-field>
+
+        <mat-form-field class="">
+          <input matInput placeholder="Specification value" name="specificationValue" [ngModelOptions]="{standalone: true}"
+            [(ngModel)]="specificationValue">
+        </mat-form-field>
+
+        <div class="">
+          <div class="">
+            <button type="button" mat-icon-button (click)="addSpecification()">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngFor="let specification of product.specifications">
+      <div class="input-group">
+        <p>{{ specification.name }} {{ specification.value}}</p>
+        <div class="">
+          <div class="">
+            <button mat-icon-button type="button" (click)="removeSpecification(specification)">
+              <mat-icon>clear</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <button mat-raised-button type="submit">Add</button>
+
   </form>
 </div>
