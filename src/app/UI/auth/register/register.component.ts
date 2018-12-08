@@ -18,7 +18,6 @@ export class RegisterComponent implements OnInit {
   public defaultMatcher;
   public passwordMatcher;
   public constants = Constants;
-  public confirmPassword: string;
 
   private formBuilder = new FormBuilder();
 

@@ -1,3 +1,4 @@
+import { ProductModule } from './UI/product/product.module';
 import { AuthService } from './Services/AuthService';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -20,6 +21,7 @@ import { ProductService } from './Services/ProductService';
     AppRoutingModule,
     BrowserAnimationsModule,
     AuthModule,
+    ProductModule,
     AngularFireModule.initializeApp(environment.firebase, 'Shop'),
     AngularFireDatabaseModule
   ],
