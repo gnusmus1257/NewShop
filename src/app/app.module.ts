@@ -1,4 +1,3 @@
-import { SerializeHelper } from './Services/SerializeHelper';
 import { AuthService } from './Services/AuthService';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -10,6 +9,7 @@ import { AuthModule } from './UI/auth/auth.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
+import { ProductService } from './Services/ProductService';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebase, 'Shop'),
     AngularFireDatabaseModule
   ],
-  providers: [AuthService, SerializeHelper],
+  providers: [AuthService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

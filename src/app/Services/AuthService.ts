@@ -1,32 +1,20 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { User } from '../Models/User';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { BaseBDService } from './baseBDService';
 
 @Injectable()
-export class AuthService {
+export class AuthService extends BaseBDService<User> {
 
   public OnLoginEvent = new EventEmitter<boolean>();
   public OnRegisterEvent = new EventEmitter<boolean>();
   public OnLogOutEvent = new EventEmitter<boolean>();
 
   private user: User;
-  private users: User[];
 
-  constructor(private db: AngularFireDatabase) {
-    const service = this;
-    const commentsRef = this.db.database.ref('/users');
-    commentsRef.on('child_added', function (data) {
-      service.getAllUsers();
-    });
-
-    commentsRef.on('child_changed', function (data) {
-      service.getAllUsers();
-    });
-
-    commentsRef.on('child_removed', function (data) {
-      service.getAllUsers();
-    });
-    this.getAllUsers();
+  constructor(protected db: AngularFireDatabase) {
+    super(db);
+    this.tableName = '/users';
   }
 
   public login(user: User): boolean {
@@ -40,8 +28,8 @@ export class AuthService {
   }
 
   public register(user: User): boolean {
-    if (!this.isContainUser(user.username)) {
-      this.db.list<User>('/users').push(user);
+    if (!this.isContain(user)) {
+      this.db.list<User>(this.tableName).push(user);
       this.OnRegisterEvent.emit(true);
       return true;
     } else {
@@ -51,10 +39,6 @@ export class AuthService {
 
   public getCurrentUser(): User {
     return this.user;
-  }
-
-  public isContainUser(username: string): boolean {
-    return this.findUser(username) !== undefined;
   }
 
   public isLogged(): boolean {
@@ -71,18 +55,7 @@ export class AuthService {
     this.OnLogOutEvent.emit(true);
   }
 
-  private getAllUsers() {
-    const service = this;
-    const users = [];
-    this.db.database.ref('/users').once('value').then(function (snapshot) {
-      snapshot.forEach(function (childSnapshot) {
-        users.push(childSnapshot.val());
-      });
-      service.users = users;
-    });
-  }
-
   private findUser(username: string): User {
-    return this.users.find(x => x.username === username);
+    return this.elements.find(x => x.username === username);
   }
 }
