@@ -3,6 +3,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Product } from '../Models/Product/Product';
 import { BaseBDService } from './baseBDService';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { Observable, of, from } from 'rxjs';
 
 @Injectable()
 export class ProductService extends BaseBDService<Product> {
@@ -11,10 +12,9 @@ export class ProductService extends BaseBDService<Product> {
     super(db, Constants.productsTableName);
   }
 
-  public get(id: string): Product {
-    const el =  this.elements.find(x => x.id.toString() === id);
-    console.log(el);
-    return el;
+  public async get(id: string): Promise<Product> {
+    const element = await this.getElements().toPromise().then(res => res);
+    return element ? element.find(x => x.id.toString() === id) : null;
   }
 
   public add(element: Product): boolean {

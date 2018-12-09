@@ -62,3 +62,4 @@ typings/
 .vs/slnx.sqlite
 .vs/config/applicationhost.config
 .vs/VSWorkspaceState.json
+package-lock.json

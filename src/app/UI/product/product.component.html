@@ -1,7 +1,7 @@
 <mat-card class="card" id="{{product.id}}">
   <mat-card-header>
     <div mat-card-avatar></div>
-    <mat-card-title>{{product.title}}</mat-card-title>
+    <mat-card-title><a routerLink="/product-details/{{product.id}}">{{product.title}}</a></mat-card-title>
     <mat-card-subtitle>{{product.category.title}}</mat-card-subtitle>
   </mat-card-header>
   <div class="center">

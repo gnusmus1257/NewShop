@@ -1,3 +1,5 @@
+@import "../../../styles/variables.scss";
+
 .center {
   display: flex;
   justify-content: center;
@@ -8,10 +10,13 @@ img {
   max-height: 300px;
   max-width: 300px;
   margin: 15px;
+  @media (min-width: $breakpoint-mobile) {
+    margin: 0;
+  }
 }
 
 .card {
-  min-height: 300px;
-  min-width: 300px;
-  margin: unset!important;
+  height: 550px;
+  width: 320px;
+  margin: unset !important;
 }

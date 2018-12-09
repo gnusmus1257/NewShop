@@ -15,14 +15,12 @@ export class ProductListComponent implements OnInit {
   public IsReady: boolean;
 
   constructor(private productService: ProductService) {
-    // code...
   }
 
   ngOnInit() {
     this.IsReady = false;
-
-    this.productService.isReadyList.subscribe(() => {
-      this.Products = this.productService.elements;
+    this.productService.getElements().subscribe(res => {
+      this.Products = res;
       this.IsReady = true;
     });
   }
