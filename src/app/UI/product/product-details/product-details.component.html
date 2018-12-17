@@ -13,7 +13,7 @@
     {{product.description}}
   </p>
 
-  <ng-image-slider *ngIf="product.imagesLinks" [images]="product.imagesLinks"></ng-image-slider>
+  <ng-image-slider [images]="product.imagesLinks"></ng-image-slider>
 
   <table *ngIf="product?.specifications" mat-table [dataSource]="product.specifications" class="mat-elevation-z8">
     <ng-container matColumnDef="Specification">

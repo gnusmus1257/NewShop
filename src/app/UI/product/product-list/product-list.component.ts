@@ -18,39 +18,14 @@ export class ProductListComponent implements OnInit {
   public search: any;
 
   constructor(private productService: ProductService) {
+    // code...
   }
 
   ngOnInit() {
     this.IsReady = false;
-    this.search = '';
 
-    const options = environment.algolia;
-    this.search = instantsearch(options);
-    // search box widget
-    this.search.addWidget(
-      instantsearch.widgets.searchBox({
-        container: '#search-box',
-        autofocus: false,
-        placeholder: 'Search for actors',
-        poweredBy: true
-      })
-    );
-
-    this.search.addWidget(
-      instantsearch.widgets.hits({
-        container: '#hits',
-        templates: {
-          empty: 'No results',
-          item: `<img src=https://image.tmdb.org/t/p/w300{{image_path}} width="50px">
-                <strong>Result {{objectID}}</strong>:
-                {{{_highlightResult.name.value}}}`
-        },
-        escapeHits: true
-      })
-    );  
-
-    this.productService.getElements().subscribe(res => {
-      this.Products = res;
+    this.productService.isReadyList.subscribe(() => {
+      this.Products = this.productService.elements;
       this.IsReady = true;
     });
     this.search.start();

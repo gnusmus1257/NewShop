@@ -1,14 +1,13 @@
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Injectable, EventEmitter } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 @Injectable()
 export abstract class BaseBDService<T> {
 
-  public onReadyList = new EventEmitter<boolean>();
-  public isReady: boolean;
+  public isReadyList = new EventEmitter<boolean>();
   public onAddElement = new EventEmitter<boolean>();
-  protected elements: T[];
+  public elements: T[];
   public refElements: Observable<T[]>;
   public tableName: string;
 
@@ -40,14 +39,6 @@ export abstract class BaseBDService<T> {
     }
   }
 
-  public getElements(): Observable<T[]> {
-    if (this.isReady) {
-      return of(this.elements);
-    } else {
-      return this.refElements;
-    }
-  }
-
   public isContain(element: T): boolean {
     return this.elements.find(x => x === element) !== undefined;
   }
@@ -56,8 +47,8 @@ export abstract class BaseBDService<T> {
     this.refElements = this.db.list<T>(this.tableName).valueChanges();
     this.refElements.subscribe(list => {
       this.elements = list;
-      this.onReadyList.emit(true);
-      this.isReady = true;
+      console.log(this.elements);
+      this.isReadyList.emit(true);
     });
   }
 }
